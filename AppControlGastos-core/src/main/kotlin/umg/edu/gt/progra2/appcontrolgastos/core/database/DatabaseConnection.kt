@@ -6,11 +6,11 @@ import java.sql.DriverManager
 object DatabaseConnection {
 
     private const val URL =
-        "jdbc:mysql://localhost:3306/prog2_app"
+        "jdbc:mysql://localhost:3307/prog2_app"
 
     private const val USER = "root"
 
-    private const val PASSWORD = ""
+    private const val PASSWORD = "154872"
 
     fun getConnection(): Connection {
         return DriverManager.getConnection(

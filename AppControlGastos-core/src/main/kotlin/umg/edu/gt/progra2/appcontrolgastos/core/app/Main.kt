@@ -1,6 +1,9 @@
 package umg.edu.gt.progra2.appcontrolgastos.core.app
 
 import umg.edu.gt.progra2.appcontrolgastos.core.database.DatabaseConnection
+import umg.edu.gt.progra2.appcontrolgastos.core.model.Usuario
+import umg.edu.gt.progra2.appcontrolgastos.core.repository.UsuarioRepository
+
 
 fun main() {
 
@@ -17,5 +20,19 @@ fun main() {
 
         e.printStackTrace()
     }
+
+    /*
+    val usuario = Usuario(
+        0,
+        "Carlos",
+        "carlos@gmail.com",
+        "1234"
+    )
+
+    val repository = UsuarioRepository()
+
+    println(repository.guardar(usuario))
+*/
+
 }
 
