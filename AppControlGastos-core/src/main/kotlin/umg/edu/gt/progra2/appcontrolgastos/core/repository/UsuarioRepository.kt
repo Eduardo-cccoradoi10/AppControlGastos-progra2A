@@ -51,4 +51,30 @@ class UsuarioRepository {
 
         return usuarios
     }
+
+    fun buscarPorId(id: Int): Usuario? {
+
+        val sql = "SELECT * FROM usuarios WHERE id = ?"
+
+        DatabaseConnection.getConnection().use { connection ->
+
+            val statement = connection.prepareStatement(sql)
+
+            statement.setInt(1, id)
+
+            val resultSet = statement.executeQuery()
+
+            if (resultSet.next()) {
+
+                return Usuario(
+                    resultSet.getInt("id"),
+                    resultSet.getString("nombre"),
+                    resultSet.getString("correo"),
+                    resultSet.getString("password")
+                )
+            }
+        }
+
+        return null
+    }
 }
