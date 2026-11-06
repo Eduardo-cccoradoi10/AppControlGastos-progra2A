@@ -31,4 +31,36 @@ class TransaccionRepository {
             return statement.executeUpdate() > 0
         }
     }
+
+    fun obtenerTodos(): List<Transaccion> {
+
+        val transacciones = mutableListOf<Transaccion>()
+
+        val sql = "SELECT * FROM transacciones"
+
+        DatabaseConnection.getConnection().use { connection ->
+
+            val statement = connection.prepareStatement(sql)
+
+            val resultSet = statement.executeQuery()
+
+            while (resultSet.next()) {
+
+                val transaccion = Transaccion(
+                    id = resultSet.getInt("id"),
+                    descripcion = resultSet.getString("descripcion"),
+                    monto = resultSet.getDouble("monto"),
+                    tipo = resultSet.getString("tipo"),
+                    usuarioId = resultSet.getInt("usuario_id"),
+                    categoriaId = resultSet.getInt("categoria_id")
+                )
+
+                transacciones.add(transaccion)
+            }
+        }
+
+        return transacciones
+    }
+
+    
 }
