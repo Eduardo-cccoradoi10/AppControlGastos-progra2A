@@ -81,8 +81,6 @@ fun main() {
 
     println(categoriaRepository.actualizar(categoriaActualizada))
 
-     */
-
     val transaccionRepository = TransaccionRepository()
 
     val transaccion = Transaccion(
@@ -95,6 +93,9 @@ fun main() {
     )
 
     println(transaccionRepository.guardar(transaccion))
+
+     */
+
 
 }
 

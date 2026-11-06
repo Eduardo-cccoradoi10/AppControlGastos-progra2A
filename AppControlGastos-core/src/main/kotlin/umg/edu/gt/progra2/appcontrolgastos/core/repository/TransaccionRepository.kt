@@ -62,5 +62,31 @@ class TransaccionRepository {
         return transacciones
     }
 
+    fun buscarPorId(id: Int): Transaccion? {
 
+        val sql = "SELECT * FROM transacciones WHERE id = ?"
+
+        DatabaseConnection.getConnection().use { connection ->
+
+            val statement = connection.prepareStatement(sql)
+
+            statement.setInt(1, id)
+
+            val resultSet = statement.executeQuery()
+
+            if (resultSet.next()) {
+
+                return Transaccion(
+                    id = resultSet.getInt("id"),
+                    descripcion = resultSet.getString("descripcion"),
+                    monto = resultSet.getDouble("monto"),
+                    tipo = resultSet.getString("tipo"),
+                    usuarioId = resultSet.getInt("usuario_id"),
+                    categoriaId = resultSet.getInt("categoria_id")
+                )
+            }
+        }
+
+        return null
+    }
 }
