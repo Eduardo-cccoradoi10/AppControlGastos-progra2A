@@ -77,4 +77,25 @@ class UsuarioRepository {
 
         return null
     }
+
+    fun actualizar(usuario: Usuario): Boolean {
+
+        val sql = """
+        UPDATE usuarios
+        SET nombre = ?, correo = ?, password = ?
+        WHERE id = ?
+    """.trimIndent()
+
+        DatabaseConnection.getConnection().use { connection ->
+
+            val statement = connection.prepareStatement(sql)
+
+            statement.setString(1, usuario.nombre)
+            statement.setString(2, usuario.correo)
+            statement.setString(3, usuario.password)
+            statement.setInt(4, usuario.id)
+
+            return statement.executeUpdate() > 0
+        }
+    }
 }
