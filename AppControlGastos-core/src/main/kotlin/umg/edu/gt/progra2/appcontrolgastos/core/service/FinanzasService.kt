@@ -26,4 +26,32 @@ class FinanzasService(
 
         return calcularTotalIngresos() - calcularTotalGastos()
     }
+
+    fun obtenerTotalPorCategoria(
+        categoriaId: Int
+    ): Double {
+
+        return transaccionRepository
+            .obtenerTodos()
+            .filter {
+                it.categoriaId == categoriaId &&
+                        it.tipo == "GASTO"
+            }
+            .sumOf { it.monto }
+    }
+
+    fun obtenerTransaccionesUsuario(
+        usuarioId: Int
+    ) = transaccionRepository
+        .obtenerTodos()
+        .filter {
+            it.usuarioId == usuarioId
+        }
+
+    fun contarTransacciones(): Int {
+
+        return transaccionRepository
+            .obtenerTodos()
+            .size
+    }
 }

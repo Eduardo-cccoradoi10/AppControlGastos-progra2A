@@ -7,6 +7,7 @@ import umg.edu.gt.progra2.appcontrolgastos.core.model.Categoria
 import umg.edu.gt.progra2.appcontrolgastos.core.repository.CategoriaRepository
 import umg.edu.gt.progra2.appcontrolgastos.core.model.Transaccion
 import umg.edu.gt.progra2.appcontrolgastos.core.repository.TransaccionRepository
+import umg.edu.gt.progra2.appcontrolgastos.core.service.FinanzasService
 
 fun main() {
 
@@ -100,8 +101,6 @@ fun main() {
 
     println(transaccion)
 
-     */
-
     val transaccionRepository = TransaccionRepository()
 
     val transaccionActualizada = Transaccion(
@@ -114,5 +113,17 @@ fun main() {
     )
 
     println(transaccionRepository.actualizar(transaccionActualizada))
+
+     */
+
+    val transaccionRepository = TransaccionRepository()
+
+    val finanzasService = FinanzasService(
+        transaccionRepository
+    )
+
+    println("Ingresos: ${finanzasService.calcularTotalIngresos()}")
+    println("Gastos: ${finanzasService.calcularTotalGastos()}")
+    println("Saldo: ${finanzasService.calcularSaldoActual()}")
 }
 
