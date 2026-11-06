@@ -71,4 +71,23 @@ class CategoriaRepository {
 
         return null
     }
+
+    fun actualizar(categoria: Categoria): Boolean {
+
+        val sql = """
+        UPDATE categorias
+        SET nombre = ?
+        WHERE id = ?
+    """.trimIndent()
+
+        DatabaseConnection.getConnection().use { connection ->
+
+            val statement = connection.prepareStatement(sql)
+
+            statement.setString(1, categoria.nombre)
+            statement.setInt(2, categoria.id)
+
+            return statement.executeUpdate() > 0
+        }
+    }
 }
