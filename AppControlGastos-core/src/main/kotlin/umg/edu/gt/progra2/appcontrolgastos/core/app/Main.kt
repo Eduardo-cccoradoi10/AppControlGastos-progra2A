@@ -94,6 +94,12 @@ fun main() {
 
     println(transaccionRepository.guardar(transaccion))
 
+    val transaccionRepository = TransaccionRepository()
+
+    val transaccion = transaccionRepository.buscarPorId(1)
+
+    println(transaccion)
+
      */
 
 

@@ -89,4 +89,31 @@ class TransaccionRepository {
 
         return null
     }
+
+    fun actualizar(transaccion: Transaccion): Boolean {
+
+        val sql = """
+        UPDATE transacciones
+        SET descripcion = ?,
+            monto = ?,
+            tipo = ?,
+            usuario_id = ?,
+            categoria_id = ?
+        WHERE id = ?
+    """.trimIndent()
+
+        DatabaseConnection.getConnection().use { connection ->
+
+            val statement = connection.prepareStatement(sql)
+
+            statement.setString(1, transaccion.descripcion)
+            statement.setDouble(2, transaccion.monto)
+            statement.setString(3, transaccion.tipo)
+            statement.setInt(4, transaccion.usuarioId)
+            statement.setInt(5, transaccion.categoriaId)
+            statement.setInt(6, transaccion.id)
+
+            return statement.executeUpdate() > 0
+        }
+    }
 }
