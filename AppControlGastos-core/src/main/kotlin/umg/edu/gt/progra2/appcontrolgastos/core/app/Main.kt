@@ -5,7 +5,8 @@ import umg.edu.gt.progra2.appcontrolgastos.core.model.Usuario
 import umg.edu.gt.progra2.appcontrolgastos.core.repository.UsuarioRepository
 import umg.edu.gt.progra2.appcontrolgastos.core.model.Categoria
 import umg.edu.gt.progra2.appcontrolgastos.core.repository.CategoriaRepository
-
+import umg.edu.gt.progra2.appcontrolgastos.core.model.Transaccion
+import umg.edu.gt.progra2.appcontrolgastos.core.repository.TransaccionRepository
 
 fun main() {
 
@@ -81,6 +82,19 @@ fun main() {
     println(categoriaRepository.actualizar(categoriaActualizada))
 
      */
+
+    val transaccionRepository = TransaccionRepository()
+
+    val transaccion = Transaccion(
+        id = 0,
+        descripcion = "Compra de almuerzo",
+        monto = 35.50,
+        tipo = "GASTO",
+        usuarioId = 1,
+        categoriaId = 1
+    )
+
+    println(transaccionRepository.guardar(transaccion))
 
 }
 

@@ -62,5 +62,5 @@ class TransaccionRepository {
         return transacciones
     }
 
-    
+
 }
