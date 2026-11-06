@@ -33,6 +33,12 @@ fun main() {
 
     println(repository.guardar(usuario))
 */
+    val repository = UsuarioRepository()
 
+    val usuarios = repository.obtenerTodos()
+
+    usuarios.forEach {
+        println(it)
+    }
 }
 
