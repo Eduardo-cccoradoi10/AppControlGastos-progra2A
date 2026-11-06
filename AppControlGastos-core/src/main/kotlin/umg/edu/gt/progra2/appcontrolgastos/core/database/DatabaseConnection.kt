@@ -10,7 +10,7 @@ object DatabaseConnection {
 
     private const val USER = "root"
 
-    private const val PASSWORD = "154872"
+    private const val PASSWORD = ""
 
     fun getConnection(): Connection {
         return DriverManager.getConnection(

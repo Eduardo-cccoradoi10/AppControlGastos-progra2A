@@ -23,4 +23,32 @@ class UsuarioRepository {
             return statement.executeUpdate() > 0
         }
     }
+
+    fun obtenerTodos(): List<Usuario> {
+
+        val usuarios = mutableListOf<Usuario>()
+
+        val sql = "SELECT * FROM usuarios"
+
+        DatabaseConnection.getConnection().use { connection ->
+
+            val statement = connection.prepareStatement(sql)
+
+            val resultSet = statement.executeQuery()
+
+            while (resultSet.next()) {
+
+                val usuario = Usuario(
+                    resultSet.getInt("id"),
+                    resultSet.getString("nombre"),
+                    resultSet.getString("correo"),
+                    resultSet.getString("password")
+                )
+
+                usuarios.add(usuario)
+            }
+        }
+
+        return usuarios
+    }
 }
