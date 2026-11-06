@@ -71,8 +71,16 @@ fun main() {
         println(it)
     }
 
-     */
+    val categoriaRepository = CategoriaRepository()
 
+    val categoriaActualizada = Categoria(
+        id = 1,
+        nombre = "Comida"
+    )
+
+    println(categoriaRepository.actualizar(categoriaActualizada))
+
+     */
 
 }
 

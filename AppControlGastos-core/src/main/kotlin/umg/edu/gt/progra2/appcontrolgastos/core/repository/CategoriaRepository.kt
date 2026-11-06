@@ -90,4 +90,18 @@ class CategoriaRepository {
             return statement.executeUpdate() > 0
         }
     }
+
+    fun eliminar(id: Int): Boolean {
+
+        val sql = "DELETE FROM categorias WHERE id = ?"
+
+        DatabaseConnection.getConnection().use { connection ->
+
+            val statement = connection.prepareStatement(sql)
+
+            statement.setInt(1, id)
+
+            return statement.executeUpdate() > 0
+        }
+    }
 }
