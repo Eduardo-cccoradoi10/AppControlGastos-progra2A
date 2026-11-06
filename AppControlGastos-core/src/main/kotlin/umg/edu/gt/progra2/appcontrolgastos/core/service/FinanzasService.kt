@@ -54,4 +54,38 @@ class FinanzasService(
             .obtenerTodos()
             .size
     }
+
+    fun obtenerIngresosPorUsuario(
+        usuarioId: Int
+    ): Double {
+
+        return transaccionRepository
+            .obtenerTodos()
+            .filter {
+                it.usuarioId == usuarioId &&
+                        it.tipo == "INGRESO"
+            }
+            .sumOf { it.monto }
+    }
+
+    fun obtenerGastosPorUsuario(
+        usuarioId: Int
+    ): Double {
+
+        return transaccionRepository
+            .obtenerTodos()
+            .filter {
+                it.usuarioId == usuarioId &&
+                        it.tipo == "GASTO"
+            }
+            .sumOf { it.monto }
+    }
+
+    fun obtenerSaldoPorUsuario(
+        usuarioId: Int
+    ): Double {
+
+        return obtenerIngresosPorUsuario(usuarioId) -
+                obtenerGastosPorUsuario(usuarioId)
+    }
 }
