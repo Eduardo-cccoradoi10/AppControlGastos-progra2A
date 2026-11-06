@@ -3,6 +3,8 @@ package umg.edu.gt.progra2.appcontrolgastos.core.app
 import umg.edu.gt.progra2.appcontrolgastos.core.database.DatabaseConnection
 import umg.edu.gt.progra2.appcontrolgastos.core.model.Usuario
 import umg.edu.gt.progra2.appcontrolgastos.core.repository.UsuarioRepository
+import umg.edu.gt.progra2.appcontrolgastos.core.model.Categoria
+import umg.edu.gt.progra2.appcontrolgastos.core.repository.CategoriaRepository
 
 
 fun main() {
@@ -61,6 +63,8 @@ fun main() {
     println(repository.actualizar(usuarioActualizado))
 
      */
+
+    
 
 }
 

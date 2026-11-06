@@ -21,4 +21,30 @@ class CategoriaRepository {
             return statement.executeUpdate() > 0
         }
     }
+
+    fun obtenerTodos(): List<Categoria> {
+
+        val categorias = mutableListOf<Categoria>()
+
+        val sql = "SELECT * FROM categorias"
+
+        DatabaseConnection.getConnection().use { connection ->
+
+            val statement = connection.prepareStatement(sql)
+
+            val resultSet = statement.executeQuery()
+
+            while (resultSet.next()) {
+
+                val categoria = Categoria(
+                    id = resultSet.getInt("id"),
+                    nombre = resultSet.getString("nombre")
+                )
+
+                categorias.add(categoria)
+            }
+        }
+
+        return categorias
+    }
 }
