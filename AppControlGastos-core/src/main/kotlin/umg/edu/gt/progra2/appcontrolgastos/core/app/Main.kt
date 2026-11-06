@@ -102,6 +102,17 @@ fun main() {
 
      */
 
+    val transaccionRepository = TransaccionRepository()
 
+    val transaccionActualizada = Transaccion(
+        id = 1,
+        descripcion = "Compra de cena",
+        monto = 50.00,
+        tipo = "GASTO",
+        usuarioId = 1,
+        categoriaId = 1
+    )
+
+    println(transaccionRepository.actualizar(transaccionActualizada))
 }
 
