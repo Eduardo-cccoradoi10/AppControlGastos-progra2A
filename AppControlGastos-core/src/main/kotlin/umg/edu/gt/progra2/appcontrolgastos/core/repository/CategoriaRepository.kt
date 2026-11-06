@@ -47,4 +47,28 @@ class CategoriaRepository {
 
         return categorias
     }
+
+    fun buscarPorId(id: Int): Categoria? {
+
+        val sql = "SELECT * FROM categorias WHERE id = ?"
+
+        DatabaseConnection.getConnection().use { connection ->
+
+            val statement = connection.prepareStatement(sql)
+
+            statement.setInt(1, id)
+
+            val resultSet = statement.executeQuery()
+
+            if (resultSet.next()) {
+
+                return Categoria(
+                    id = resultSet.getInt("id"),
+                    nombre = resultSet.getString("nombre")
+                )
+            }
+        }
+
+        return null
+    }
 }

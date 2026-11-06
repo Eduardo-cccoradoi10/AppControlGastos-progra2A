@@ -62,9 +62,17 @@ fun main() {
 
     println(repository.actualizar(usuarioActualizado))
 
+
+    val categoriaRepository = CategoriaRepository()
+
+    val categorias = categoriaRepository.obtenerTodos()
+
+    categorias.forEach {
+        println(it)
+    }
+
      */
 
-    
 
 }
 
