@@ -40,12 +40,25 @@ fun main() {
     usuarios.forEach {
         println(it)
     }
-    */
+
 
     val repository = UsuarioRepository()
 
     val usuario = repository.buscarPorId(1)
 
     println(usuario)
+
+     */
+
+    val repository = UsuarioRepository()
+
+    val usuarioActualizado = Usuario(
+        id = 1,
+        nombre = "Carlos Eduardo",
+        correo = "carlos@gmail.com",
+        password = "4321"
+    )
+
+    println(repository.actualizar(usuarioActualizado))
 }
 
